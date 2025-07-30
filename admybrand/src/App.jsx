@@ -11,6 +11,7 @@ import Navbar from './components/Navbar'
 
 // Lazy load other components
 const Hero = lazy(() => import('./components/Hero'))
+const VideoSection = lazy(() => import('./components/VideoSection'))
 const Features = lazy(() => import('./components/Features'))
 const Pricing = lazy(() => import('./components/Pricing'))
 const Testimonials = lazy(() => import('./components/Testimonials'))
@@ -75,6 +76,17 @@ function App() {
                     transition={{ duration: 0.5 }}
                   >
                     <Hero />
+                  </motion.div>
+                </Suspense>
+
+                <Suspense fallback={<LoadingSpinner />}>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <VideoSection />
                   </motion.div>
                 </Suspense>
 

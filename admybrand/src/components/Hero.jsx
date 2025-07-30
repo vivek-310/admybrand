@@ -1,146 +1,159 @@
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Button from './Button'
-import AnimatedLogo from './AnimatedLogo'
 
 const Hero = () => {
-  const { scrollY } = useScroll()
-  const y1 = useTransform(scrollY, [0, 300], [0, 100])
-  const y2 = useTransform(scrollY, [0, 300], [0, -100])
-  const opacity = useTransform(scrollY, [0, 300], [1, 0])
-
-  // 3D Cards for features preview
-  const previewFeatures = [
-    { title: 'AI Content', icon: '🤖' },
-    { title: 'Analytics', icon: '📊' },
-    { title: 'Automation', icon: '⚡' }
-  ]
-
   return (
-    <div className="relative min-h-[100svh] flex items-center bg-black dark:bg-black">
-      {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-12">
-        <div className="text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex justify-center mb-8"
-          >
-            <AnimatedLogo />
-          </motion.div>
+    <div className="relative min-h-screen bg-black flex flex-col justify-between overflow-hidden">
+      {/* Background gradient effect */}
+      <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-orange-600/20 blur-[120px] rounded-full" />
+      
+      {/* Main content */}
+      <div className="relative z-10 flex-1 flex items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center text-center">
+            {/* Page indicator */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              className="mb-8 text-white/50 text-sm"
+            >
+              1/4
+            </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-100 dark:text-white mb-4 sm:mb-8 px-4">
-              Transform Your Brand with
-              <br className="hidden sm:block" />
-              <span className="sm:mt-2 inline-block">AI-Powered Marketing</span>
-            </h1>
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-300 dark:text-gray-400 mb-8 sm:mb-12 max-w-3xl mx-auto px-4">
-              Harness the power of artificial intelligence to create, optimize, and scale your marketing campaigns like never before.
-            </p>
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center px-4 mb-16"
-          >
-            <Button size="lg" className="group w-full sm:w-auto bg-white dark:bg-gray-800 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-              <span className="relative inline-flex items-center">
-                Start Free Trial
-                <motion.span
-                  className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-900 dark:bg-white transform origin-left"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ duration: 0.3 }}
-                />
-              </span>
-            </Button>
-            <Button variant="secondary" size="lg" className="group w-full sm:w-auto border-2 border-white dark:border-gray-300 text-white hover:bg-white/10 dark:hover:bg-gray-800/50">
-              <span className="relative inline-flex items-center">
-                Watch Demo
-                <motion.svg
-                  className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  initial={{ x: 0 }}
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ repeat: Infinity, duration: 1.5 }}
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </motion.svg>
-              </span>
-            </Button>
-          </motion.div>
+            {/* Main heading */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-6xl md:text-8xl font-serif text-white mb-8 tracking-tight"
+            >
+              We create videos
+            </motion.h1>
 
-          {/* Preview Cards */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-            className="flex flex-wrap justify-center gap-8 max-w-4xl mx-auto"
-            style={{ perspective: '1000px' }}
-          >
-            {previewFeatures.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                className="w-64 h-48 bg-white/5 dark:bg-black/30 backdrop-blur-sm rounded-xl p-6 flex flex-col items-center justify-center border border-white/10 dark:border-gray-700/50"
-                initial={{ opacity: 0, rotateX: 45, y: 100 }}
-                animate={{ opacity: 1, rotateX: 0, y: 0 }}
-                transition={{ delay: index * 0.2 + 1, duration: 0.5 }}
-                whileHover={{ 
-                  scale: 1.05,
-                  rotateY: 5,
-                  transition: { duration: 0.2 }
-                }}
+            {/* Subtext */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="max-w-2xl text-white/70 text-lg mb-12"
+            >
+              <p>WE ARE A VIDEO PRODUCTION STUDIO</p>
+              <p>THAT CREATES HIGH-QUALITY CONTENT</p>
+              <p>SO YOU CAN REACH A BIGGER AUDIENCE</p>
+            </motion.div>
+
+            {/* CTA Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="flex items-center gap-4"
+            >
+              <Button
+                variant="secondary"
+                size="lg"
+                className="group relative overflow-hidden"
               >
-                <span className="text-4xl mb-4">{feature.icon}</span>
-                <h3 className="text-xl font-semibold text-gray-100 dark:text-white">
-                  {feature.title}
-                </h3>
-              </motion.div>
-            ))}
+                <span className="relative z-10 flex items-center gap-2">
+                  QUALIFY FOR AN INTERVIEW
+                  <svg
+                    className="w-6 h-6 transform group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </span>
+              </Button>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Floating Images */}
+        <div className="absolute inset-0 pointer-events-none">
+          {/* Top right image */}
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.8 }}
+            className="absolute top-1/4 right-[10%] w-32 h-32 rounded-2xl overflow-hidden"
+          >
+            <img
+              src="/path-to-your-image1.jpg"
+              alt="Video production"
+              className="w-full h-full object-cover grayscale"
+            />
+          </motion.div>
+
+          {/* Bottom left image */}
+          <motion.div
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 1 }}
+            className="absolute bottom-1/4 left-[10%] w-32 h-32 rounded-2xl overflow-hidden"
+          >
+            <img
+              src="/path-to-your-image2.jpg"
+              alt="Video production"
+              className="w-full h-full object-cover grayscale"
+            />
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div 
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden sm:block"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 2, duration: 0.5 }}
-        style={{ opacity }}
-      >
-        <motion.svg
-          className="w-6 h-6 text-gray-400"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
+      {/* Bottom Section */}
+      <div className="relative z-10 w-full py-8 px-8 flex justify-between items-center">
+        {/* Play button */}
+        <motion.button
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.5, delay: 1.2 }}
+          className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20"
         >
-          <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-        </motion.svg>
-      </motion.div>
+          <svg
+            className="w-8 h-8 text-white"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </motion.button>
+
+        {/* Social links */}
+        <div className="flex gap-4">
+          <motion.a
+            href="#"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.4 }}
+            className="text-white/50 hover:text-white transition-colors"
+          >
+            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm3 8h-1.35c-.538 0-.65.221-.65.778V10h2l-.209 2H13v7h-3v-7H8v-2h2V7.692C10 5.923 10.931 5 13.029 5H15v3z" />
+            </svg>
+          </motion.a>
+          <motion.a
+            href="#"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5 }}
+            className="text-white/50 hover:text-white transition-colors"
+          >
+            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+            </svg>
+          </motion.a>
+        </div>
+      </div>
     </div>
   )
 }
 
-export default Hero 
+export default Hero
