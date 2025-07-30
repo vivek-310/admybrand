@@ -76,7 +76,7 @@ const Pricing = () => {
   }
 
   return (
-    <section id="pricing" className="relative py-16 sm:py-20 bg-gray-50 dark:bg-gray-900 overflow-hidden transition-colors duration-200">
+    <section id="pricing" className="relative py-16 sm:py-20 bg-black dark:bg-black overflow-hidden transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-12 sm:mb-16"
@@ -110,7 +110,7 @@ const Pricing = () => {
             >
               <Card
                 variant={plan.popular ? 'glass' : 'default'}
-                className={`relative h-full ${
+                className={`relative h-full bg-white/5 dark:bg-black/30 backdrop-blur-lg hover:bg-white/10 dark:hover:bg-black/40 border border-white/10 dark:border-gray-700/50 ${
                   plan.popular ? 'border-primary dark:border-primary-light transform md:scale-105' : ''
                 }`}
               >
@@ -123,25 +123,25 @@ const Pricing = () => {
                 )}
 
                 <div className="p-6 sm:p-8">
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-200">
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-100 dark:text-white mb-2 transition-colors duration-200">
                     {plan.name}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-6 transition-colors duration-200">{plan.description}</p>
+                  <p className="text-gray-300 dark:text-gray-400 mb-6 transition-colors duration-200">{plan.description}</p>
                   
                   {!plan.customPrice ? (
                     <div className="mb-6">
-                      <span className="text-4xl font-bold text-gray-900 dark:text-white transition-colors duration-200">${plan.price}</span>
-                      <span className="text-gray-600 dark:text-gray-400 transition-colors duration-200">/month</span>
+                      <span className="text-4xl font-bold text-gray-100 dark:text-white transition-colors duration-200">${plan.price}</span>
+                      <span className="text-gray-300 dark:text-gray-400 transition-colors duration-200">/month</span>
                     </div>
                   ) : (
                     <div className="mb-6">
-                      <span className="text-4xl font-bold text-gray-900 dark:text-white transition-colors duration-200">Custom</span>
+                      <span className="text-4xl font-bold text-gray-100 dark:text-white transition-colors duration-200">Custom</span>
                     </div>
                   )}
 
                   <ul className="space-y-4 mb-8">
                     {plan.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-gray-700 dark:text-gray-300 transition-colors duration-200">
+                      <li key={featureIndex} className="flex items-center text-gray-300 dark:text-gray-300 transition-colors duration-200">
                         <svg
                           className="w-5 h-5 text-primary dark:text-primary-light mr-3 flex-shrink-0"
                           fill="none"

@@ -81,7 +81,7 @@ const Features = () => {
   }
 
   return (
-    <section id="features" className="relative py-16 sm:py-20 bg-gray-50 dark:bg-gray-900 overflow-hidden transition-colors duration-200">
+    <section id="features" className="relative py-16 sm:py-20 bg-black dark:bg-black overflow-hidden transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-12 sm:mb-16"
@@ -115,7 +115,7 @@ const Features = () => {
             >
               <Card
                 variant="glass"
-                className="h-full transform transition-all duration-300 bg-white/50 dark:bg-white/5 hover:bg-white/80 dark:hover:bg-white/10"
+                className="h-full transform transition-all duration-300 bg-white/5 dark:bg-black/30 backdrop-blur-lg hover:bg-white/10 dark:hover:bg-black/40 border border-white/10 dark:border-gray-700/50"
               >
                 <motion.div
                   className="flex flex-col sm:flex-row lg:flex-col items-start sm:items-center lg:items-start gap-4 mb-4"

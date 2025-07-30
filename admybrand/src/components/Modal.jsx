@@ -82,7 +82,7 @@ const Modal = ({
             {/* Modal */}
             <div className="inline-block w-full h-screen align-middle">
               <motion.div
-                className={`relative inline-block w-full ${sizes[size]} my-8 overflow-hidden text-left align-middle bg-gradient-to-b from-gray-900 to-black rounded-2xl border border-white/10 backdrop-blur-xl shadow-2xl p-6`}
+                className={`relative inline-block w-full ${sizes[size]} my-8 overflow-hidden text-left align-middle bg-white dark:bg-gray-900 dark:bg-gradient-to-b dark:from-gray-900 dark:to-black rounded-2xl border border-gray-200 dark:border-white/10 backdrop-blur-xl shadow-2xl p-6`}
                 variants={modalVariants}
                 initial="hidden"
                 animate="visible"
@@ -90,7 +90,7 @@ const Modal = ({
               >
                 {/* Header */}
                 <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-xl sm:text-2xl font-bold text-white">
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
                     {title}
                   </h3>
                   {showClose && (

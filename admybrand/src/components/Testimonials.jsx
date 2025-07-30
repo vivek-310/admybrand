@@ -67,7 +67,7 @@ const Testimonials = () => {
   }
 
   return (
-    <section id="testimonials" className="relative py-16 sm:py-20 bg-white dark:bg-black overflow-hidden transition-colors duration-200">
+    <section id="testimonials" className="relative py-16 sm:py-20 bg-black dark:bg-black overflow-hidden transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-12 sm:mb-16"
@@ -76,7 +76,7 @@ const Testimonials = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-secondary dark:from-primary dark:to-secondary-dark mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary-light dark:text-primary mb-4">
             What Our Clients Say
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-4 transition-colors duration-200">

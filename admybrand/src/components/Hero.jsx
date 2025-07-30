@@ -16,7 +16,7 @@ const Hero = () => {
   ]
 
   return (
-    <div className="relative min-h-[100svh] flex items-center">
+    <div className="relative min-h-[100svh] flex items-center bg-black dark:bg-black">
       {/* Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-12">
         <div className="text-center relative z-10">
@@ -34,7 +34,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-8 px-4">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-100 dark:text-white mb-4 sm:mb-8 px-4">
               Transform Your Brand with
               <br className="hidden sm:block" />
               <span className="sm:mt-2 inline-block">AI-Powered Marketing</span>
@@ -46,7 +46,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-400 mb-8 sm:mb-12 max-w-3xl mx-auto px-4">
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-300 dark:text-gray-400 mb-8 sm:mb-12 max-w-3xl mx-auto px-4">
               Harness the power of artificial intelligence to create, optimize, and scale your marketing campaigns like never before.
             </p>
           </motion.div>
@@ -57,18 +57,18 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="flex flex-col sm:flex-row gap-4 justify-center px-4 mb-16"
           >
-            <Button size="lg" className="group w-full sm:w-auto bg-white text-black hover:bg-gray-100">
+            <Button size="lg" className="group w-full sm:w-auto bg-white dark:bg-gray-800 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
               <span className="relative inline-flex items-center">
                 Start Free Trial
                 <motion.span
-                  className="absolute bottom-0 left-0 w-full h-0.5 bg-black transform origin-left"
+                  className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-900 dark:bg-white transform origin-left"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ duration: 0.3 }}
                 />
               </span>
             </Button>
-            <Button variant="secondary" size="lg" className="group w-full sm:w-auto border-2 border-white text-white hover:bg-white/10">
+            <Button variant="secondary" size="lg" className="group w-full sm:w-auto border-2 border-white dark:border-gray-300 text-white hover:bg-white/10 dark:hover:bg-gray-800/50">
               <span className="relative inline-flex items-center">
                 Watch Demo
                 <motion.svg
@@ -97,7 +97,7 @@ const Hero = () => {
             {previewFeatures.map((feature, index) => (
               <motion.div
                 key={feature.title}
-                className="w-64 h-48 bg-white/5 backdrop-blur-sm rounded-xl p-6 flex flex-col items-center justify-center border border-white/10"
+                className="w-64 h-48 bg-white/5 dark:bg-black/30 backdrop-blur-sm rounded-xl p-6 flex flex-col items-center justify-center border border-white/10 dark:border-gray-700/50"
                 initial={{ opacity: 0, rotateX: 45, y: 100 }}
                 animate={{ opacity: 1, rotateX: 0, y: 0 }}
                 transition={{ delay: index * 0.2 + 1, duration: 0.5 }}
@@ -108,7 +108,7 @@ const Hero = () => {
                 }}
               >
                 <span className="text-4xl mb-4">{feature.icon}</span>
-                <h3 className="text-xl font-semibold text-white">
+                <h3 className="text-xl font-semibold text-gray-100 dark:text-white">
                   {feature.title}
                 </h3>
               </motion.div>

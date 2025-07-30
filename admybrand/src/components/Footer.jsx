@@ -79,10 +79,10 @@ const Footer = () => {
   }
 
   return (
-    <footer className="relative bg-gray-50 dark:bg-gray-900 py-12 sm:py-16 px-4 sm:px-6 lg:px-8 overflow-hidden transition-colors duration-200">
+    <footer className="relative bg-black dark:bg-black py-12 sm:py-16 px-4 sm:px-6 lg:px-8 overflow-hidden transition-colors duration-200">
       <div className="max-w-7xl mx-auto">
         {/* Newsletter Section */}
-        <div className="mb-12 sm:mb-16 bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-200">
+        <div className="mb-12 sm:mb-16 bg-white/5 dark:bg-black/30 backdrop-blur-lg rounded-2xl p-6 sm:p-8 shadow-lg border border-white/10 dark:border-gray-700/50 transition-colors duration-200">
           <div className="max-w-xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

@@ -37,7 +37,7 @@ const FAQ = () => {
   }
 
   return (
-    <section id="faq" className="relative py-16 sm:py-20 bg-gray-50 dark:bg-gray-900 overflow-hidden transition-colors duration-200">
+    <section id="faq" className="relative py-16 sm:py-20 bg-black dark:bg-black overflow-hidden transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-12 sm:mb-16"
@@ -71,19 +71,19 @@ const FAQ = () => {
             >
               <Card
                 variant="default"
-                className={`cursor-pointer transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-800/50 ${
-                  openIndex === index ? 'bg-gray-50 dark:bg-gray-800/50' : ''
+                className={`cursor-pointer transition-all duration-200 bg-white/5 dark:bg-black/30 backdrop-blur-lg hover:bg-white/10 dark:hover:bg-black/40 border border-white/10 dark:border-gray-700/50 ${
+                  openIndex === index ? 'bg-white/10 dark:bg-black/40' : ''
                 }`}
                 onClick={() => toggleAccordion(index)}
               >
                 <div className="flex justify-between items-start sm:items-center gap-4">
                   <motion.h3
-                    className="text-base sm:text-lg font-medium text-gray-900 dark:text-white flex-1 transition-colors duration-200"
+                    className="text-base sm:text-lg font-medium text-gray-100 dark:text-white flex-1 transition-colors duration-200"
                     initial={false}
                     animate={{ 
                       color: openIndex === index 
-                        ? 'rgb(59, 130, 246)' // blue-600 in light mode
-                        : 'rgb(17, 24, 39)' // gray-900 in light mode
+                        ? 'rgb(96, 165, 250)' // blue-400 in light mode
+                        : 'rgb(243, 244, 246)' // gray-100 in light mode
                     }}
                   >
                     {faq.question}
@@ -115,7 +115,7 @@ const FAQ = () => {
                       className="overflow-hidden"
                     >
                       <motion.p
-                        className="mt-4 text-sm sm:text-base text-gray-600 dark:text-gray-400 transition-colors duration-200"
+                        className="mt-4 text-sm sm:text-base text-gray-300 dark:text-gray-400 transition-colors duration-200"
                         initial={{ y: -10, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: -10, opacity: 0 }}

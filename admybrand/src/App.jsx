@@ -1,9 +1,10 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ThemeProvider } from './context/ThemeContext'
 import AnimatedBackground from './components/AnimatedBackground'
 import AnimatedLogo from './components/AnimatedLogo'
 import { useScroll } from 'framer-motion'
+import PreLoader from './components/PreLoader'
 
 // Eagerly load Navbar for immediate display
 import Navbar from './components/Navbar'
@@ -47,116 +48,124 @@ const ScrollProgress = () => {
 }
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
     <ThemeProvider>
       <div className="relative min-h-screen overflow-hidden">
-        <AnimatedBackground />
-        <ScrollProgress />
+        <PreLoader onLoadingComplete={() => setIsLoading(false)} />
         
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Navbar />
-          
-          <AnimatePresence mode="wait">
-            <Suspense fallback={<LoadingSpinner />}>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <Hero />
-              </motion.div>
-            </Suspense>
+        {!isLoading && (
+          <>
+            <AnimatedBackground />
+            <ScrollProgress />
+            
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Navbar />
+              
+              <AnimatePresence mode="wait">
+                <Suspense fallback={<LoadingSpinner />}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <Hero />
+                  </motion.div>
+                </Suspense>
 
-            <Suspense fallback={<LoadingSpinner />}>
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-              >
-                <Features />
-              </motion.div>
-            </Suspense>
+                <Suspense fallback={<LoadingSpinner />}>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <Features />
+                  </motion.div>
+                </Suspense>
 
-            <Suspense fallback={<LoadingSpinner />}>
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-              >
-                <Pricing />
-              </motion.div>
-            </Suspense>
+                <Suspense fallback={<LoadingSpinner />}>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <Pricing />
+                  </motion.div>
+                </Suspense>
 
-            <Suspense fallback={<LoadingSpinner />}>
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-              >
-                <Testimonials />
-              </motion.div>
-            </Suspense>
+                <Suspense fallback={<LoadingSpinner />}>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <Testimonials />
+                  </motion.div>
+                </Suspense>
 
-            <Suspense fallback={<LoadingSpinner />}>
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-              >
-                <FAQ />
-              </motion.div>
-            </Suspense>
+                <Suspense fallback={<LoadingSpinner />}>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <FAQ />
+                  </motion.div>
+                </Suspense>
 
-            <Suspense fallback={<LoadingSpinner />}>
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-              >
-                <Footer />
-              </motion.div>
-            </Suspense>
-          </AnimatePresence>
-        </motion.div>
+                <Suspense fallback={<LoadingSpinner />}>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <Footer />
+                  </motion.div>
+                </Suspense>
+              </AnimatePresence>
+            </motion.div>
 
-        {/* Quick Actions Menu */}
-        <motion.div
-          className="fixed bottom-8 right-8 flex flex-col gap-4"
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.5 }}
-        >
-          <motion.button
-            className="p-4 bg-primary dark:bg-primary-light rounded-full text-white shadow-lg hover:scale-110 transition-transform"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-            </svg>
-          </motion.button>
-          
-          <motion.a
-            href="#pricing"
-            className="p-4 bg-secondary dark:bg-secondary-light rounded-full text-white shadow-lg hover:scale-110 transition-transform"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </motion.a>
-        </motion.div>
+            {/* Quick Actions Menu */}
+            <motion.div
+              className="fixed bottom-8 right-8 flex flex-col gap-4"
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1, duration: 0.5 }}
+            >
+              <motion.button
+                className="p-4 bg-primary dark:bg-primary-light rounded-full text-white shadow-lg hover:scale-110 transition-transform"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                </svg>
+              </motion.button>
+              
+              <motion.a
+                href="#pricing"
+                className="p-4 bg-secondary dark:bg-secondary-light rounded-full text-white shadow-lg hover:scale-110 transition-transform"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </motion.a>
+            </motion.div>
+          </>
+        )}
       </div>
     </ThemeProvider>
   )
