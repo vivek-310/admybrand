@@ -46,7 +46,7 @@ const FAQ = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-secondary dark:from-primary dark:to-secondary-dark mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white dark:text-white mb-4">
             Frequently Asked Questions
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-4 transition-colors duration-200">

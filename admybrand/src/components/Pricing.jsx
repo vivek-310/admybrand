@@ -85,7 +85,7 @@ const Pricing = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-secondary dark:from-primary dark:to-secondary-dark mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white dark:text-white mb-4">
             Simple, Transparent Pricing
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-4 transition-colors duration-200">
@@ -116,7 +116,7 @@ const Pricing = () => {
               >
                 {plan.popular && (
                   <div className="absolute -top-5 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-gradient-to-r from-primary-light to-secondary dark:from-primary dark:to-secondary-dark text-white px-4 py-1 rounded-full text-sm font-medium">
+                    <span className="bg-white dark:bg-white text-black dark:text-black px-4 py-1 rounded-full text-sm font-medium">
                       Most Popular
                     </span>
                   </div>

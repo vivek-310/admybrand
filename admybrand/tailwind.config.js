@@ -10,24 +10,24 @@ export default {
       colors: {
         // Light mode colors
         primary: {
-          light: '#60A5FA', // blue-400
-          DEFAULT: '#3B82F6', // blue-500
-          dark: '#2563EB', // blue-600
+          light: '#FFFFFF', // white
+          DEFAULT: '#E5E5E5', // gray-200
+          dark: '#A3A3A3', // gray-400
         },
         secondary: {
-          light: '#A5B4FC', // indigo-400
-          DEFAULT: '#6366F1', // indigo-500
-          dark: '#4F46E5', // indigo-600
+          light: '#F5F5F5', // gray-100
+          DEFAULT: '#D4D4D4', // gray-300
+          dark: '#737373', // gray-500
         },
         background: {
           light: '#FFFFFF',
           DEFAULT: '#F3F4F6', // gray-100
-          dark: '#1F2937', // gray-800
+          dark: '#000000', // black
         },
         surface: {
           light: '#F9FAFB', // gray-50
           DEFAULT: '#FFFFFF',
-          dark: '#111827', // gray-900
+          dark: '#000000', // black
         },
         text: {
           light: '#6B7280', // gray-500

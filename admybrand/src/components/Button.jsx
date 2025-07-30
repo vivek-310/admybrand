@@ -8,9 +8,9 @@ const Button = ({
   const baseStyles = 'inline-flex items-center justify-center rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed'
   
   const variants = {
-    primary: 'bg-gradient-to-r from-primary-light to-secondary dark:from-primary dark:to-secondary-dark text-white hover:from-primary-dark hover:to-secondary-dark dark:hover:from-primary-light dark:hover:to-secondary focus:ring-primary/50 dark:focus:ring-primary-dark/50',
-    secondary: 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-gray-500 dark:focus:ring-white/30',
-    outline: 'border-2 border-primary dark:border-primary-light text-primary dark:text-primary-light hover:bg-primary/5 dark:hover:bg-primary-light/5 focus:ring-primary/50 dark:focus:ring-primary-light/50'
+    primary: 'bg-white dark:bg-black text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 focus:ring-gray-500 dark:focus:ring-white/30',
+    secondary: 'bg-black dark:bg-white border border-black dark:border-white text-white dark:text-black hover:bg-gray-900 dark:hover:bg-gray-100 focus:ring-gray-500 dark:focus:ring-black/30',
+    outline: 'border-2 border-black dark:border-white text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/5 focus:ring-black/50 dark:focus:ring-white/50'
   }
 
   const sizes = {

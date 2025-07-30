@@ -90,7 +90,7 @@ const Features = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-secondary dark:from-primary dark:to-secondary-dark mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white dark:text-white mb-4">
             Powerful Features for Modern Marketing
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-4 transition-colors duration-200">
@@ -125,7 +125,7 @@ const Features = () => {
                   transition={{ delay: index * 0.1 }}
                 >
                   <motion.div
-                    className="p-2 bg-gradient-to-r from-primary-light to-secondary dark:from-primary dark:to-secondary-dark rounded-lg shrink-0 text-white"
+                    className="p-2 bg-white dark:bg-white text-black dark:text-black rounded-lg shrink-0"
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >

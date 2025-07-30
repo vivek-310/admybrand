@@ -41,7 +41,7 @@ const ScrollProgress = () => {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-1 bg-primary dark:bg-primary-light origin-left z-50"
+      className="fixed top-0 left-0 right-0 h-1 bg-white dark:bg-white origin-left z-50"
       style={{ scaleX: scrollYProgress }}
     />
   )
@@ -143,7 +143,7 @@ function App() {
               transition={{ delay: 1, duration: 0.5 }}
             >
               <motion.button
-                className="p-4 bg-primary dark:bg-primary-light rounded-full text-white shadow-lg hover:scale-110 transition-transform"
+                className="p-4 bg-white dark:bg-white rounded-full text-black dark:text-black shadow-lg hover:scale-110 transition-transform"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -155,7 +155,7 @@ function App() {
               
               <motion.a
                 href="#pricing"
-                className="p-4 bg-secondary dark:bg-secondary-light rounded-full text-white shadow-lg hover:scale-110 transition-transform"
+                className="p-4 bg-black dark:bg-white rounded-full text-white dark:text-black shadow-lg hover:scale-110 transition-transform"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
