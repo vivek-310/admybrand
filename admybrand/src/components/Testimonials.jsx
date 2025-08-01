@@ -1,74 +1,56 @@
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import Card from './Card'
+import { useState } from 'react'
+import { motion } from 'framer-motion'
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [direction, setDirection] = useState(0)
 
   const testimonials = [
     {
       name: 'Sarah Johnson',
-      role: 'Marketing Director at TechCorp',
-      image: 'https://randomuser.me/api/portraits/women/1.jpg',
-      quote: 'ADmyBRAND AI has revolutionized our marketing strategy. We\'ve seen a 300% increase in engagement and our content creation time has been cut in half.'
+      role: 'Marketing Director',
+      company: 'TechCorp',
+      image: '/path-to-sarah.jpg',
+      content: 'ADmyBRAND AI has revolutionized our marketing strategy. The AI-powered content generation saves us hours every week, and the results speak for themselves - we\'ve seen a 40% increase in engagement.'
     },
     {
       name: 'Michael Chen',
-      role: 'CEO at StartupX',
-      image: 'https://randomuser.me/api/portraits/men/2.jpg',
-      quote: 'The AI-powered insights have been game-changing for our campaigns. We\'re now able to predict trends and adjust our strategy in real-time.'
+      role: 'CEO',
+      company: 'StartupXYZ',
+      image: '/path-to-michael.jpg',
+      content: 'The predictive analytics feature is game-changing. We can now forecast campaign performance with incredible accuracy and adjust our strategy in real-time. This tool has become indispensable.'
     },
     {
       name: 'Emily Rodriguez',
-      role: 'Digital Marketing Manager at GrowthCo',
-      image: 'https://randomuser.me/api/portraits/women/3.jpg',
-      quote: 'The automated reporting and campaign optimization have saved us countless hours. The ROI we\'ve seen is incredible.'
+      role: 'Digital Marketing Manager',
+      company: 'E-commerce Plus',
+      image: '/path-to-emily.jpg',
+      content: 'The multi-channel management dashboard is exactly what we needed. Managing campaigns across all platforms from one place has streamlined our entire marketing operation.'
+    },
+    {
+      name: 'David Thompson',
+      role: 'Growth Hacker',
+      company: 'ScaleUp Inc',
+      image: '/path-to-david.jpg',
+      content: 'The audience insights are incredibly detailed. We\'ve discovered new customer segments we never knew existed, and our targeting has never been more precise.'
     }
   ]
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      nextTestimonial()
-    }, 5000)
-
-    return () => clearInterval(interval)
-  }, [])
-
   const nextTestimonial = () => {
-    setDirection(1)
-    setCurrentIndex((prevIndex) =>
-      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
-    )
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
   }
 
   const prevTestimonial = () => {
-    setDirection(-1)
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
-    )
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
   }
 
-  const slideVariants = {
-    enter: (direction) => ({
-      x: direction > 0 ? 1000 : -1000,
-      opacity: 0
-    }),
-    center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1
-    },
-    exit: (direction) => ({
-      zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
-      opacity: 0
-    })
+  const goToTestimonial = (index) => {
+    setCurrentIndex(index)
   }
 
   return (
-    <section id="testimonials" className="relative py-16 sm:py-20 bg-black dark:bg-black overflow-hidden transition-colors duration-200">
+    <section id="testimonials" className="relative py-16 sm:py-20 bg-black overflow-hidden transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <motion.div
           className="text-center mb-12 sm:mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -76,99 +58,92 @@ const Testimonials = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary-light dark:text-primary mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-4">
             What Our Clients Say
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-4 transition-colors duration-200">
-            Hear from the businesses that have transformed their marketing with ADmyBRAND AI
+          <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto px-4 transition-colors duration-200">
+            Don't just take our word for it. Here's what marketing professionals are saying about ADmyBRAND AI.
           </p>
         </motion.div>
 
-        <div className="relative max-w-3xl mx-auto">
-          <div className="overflow-hidden">
-            <div className="relative h-[400px] sm:h-[350px]">
-              <AnimatePresence initial={false} custom={direction}>
-                <motion.div
-                  key={currentIndex}
-                  custom={direction}
-                  variants={slideVariants}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  transition={{
-                    x: { type: "spring", stiffness: 300, damping: 30 },
-                    opacity: { duration: 0.2 }
-                  }}
-                  className="absolute w-full"
+        {/* Testimonials Carousel */}
+        <div className="relative max-w-4xl mx-auto">
+          {/* Testimonial Cards */}
+          <div className="relative overflow-hidden">
+            <motion.div
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+              {testimonials.map((testimonial, index) => (
+                <div
+                  key={index}
+                  className="w-full flex-shrink-0 px-4"
                 >
-                  <Card variant="glass" className="mx-4">
-                    <div className="flex flex-col items-center text-center p-6 sm:p-8">
-                      <motion.img
-                        src={testimonials[currentIndex].image}
-                        alt={testimonials[currentIndex].name}
-                        className="w-20 h-20 rounded-full mb-6 border-2 border-primary dark:border-primary-light"
-                        initial={{ scale: 0.5, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ delay: 0.2 }}
-                      />
-                      <motion.p
-                        className="text-gray-700 dark:text-gray-300 text-base sm:text-lg mb-6 italic transition-colors duration-200"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
-                      >
-                        "{testimonials[currentIndex].quote}"
-                      </motion.p>
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.4 }}
-                      >
-                        <h4 className="text-gray-900 dark:text-white font-semibold transition-colors duration-200">
-                          {testimonials[currentIndex].name}
-                        </h4>
-                        <p className="text-gray-600 dark:text-gray-400 transition-colors duration-200">
-                          {testimonials[currentIndex].role}
-                        </p>
-                      </motion.div>
+                  <motion.div
+                    className="bg-black/30 backdrop-blur-lg rounded-2xl p-8 sm:p-10 border border-gray-700/50 text-center"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                  >
+                    {/* Avatar */}
+                    <div className="w-20 h-20 rounded-full mb-6 border-2 border-primary mx-auto bg-gray-800 flex items-center justify-center">
+                      <span className="text-2xl font-bold text-white">
+                        {testimonial.name.charAt(0)}
+                      </span>
                     </div>
-                  </Card>
-                </motion.div>
-              </AnimatePresence>
-            </div>
+
+                    {/* Quote */}
+                    <blockquote className="text-gray-300 text-base sm:text-lg mb-6 italic transition-colors duration-200">
+                      "{testimonial.content}"
+                    </blockquote>
+
+                    {/* Author Info */}
+                    <div className="text-center">
+                      <h4 className="text-white font-semibold transition-colors duration-200">
+                        {testimonial.name}
+                      </h4>
+                      <p className="text-gray-400 transition-colors duration-200">
+                        {testimonial.role} at {testimonial.company}
+                      </p>
+                    </div>
+                  </motion.div>
+                </div>
+              ))}
+            </motion.div>
           </div>
 
-          {/* Navigation buttons */}
+          {/* Navigation Arrows */}
           <button
             onClick={prevTestimonial}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white/10 dark:bg-white/5 hover:bg-gray-100 dark:hover:bg-white/10 rounded-full p-2 backdrop-blur-lg transition-all z-10"
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white/5 hover:bg-white/10 rounded-full p-2 backdrop-blur-lg transition-all z-10"
+            aria-label="Previous testimonial"
           >
-            <svg className="w-6 h-6 text-gray-700 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
+
           <button
             onClick={nextTestimonial}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white/10 dark:bg-white/5 hover:bg-gray-100 dark:hover:bg-white/10 rounded-full p-2 backdrop-blur-lg transition-all z-10"
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white/5 hover:bg-white/10 rounded-full p-2 backdrop-blur-lg transition-all z-10"
+            aria-label="Next testimonial"
           >
-            <svg className="w-6 h-6 text-gray-700 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
             </svg>
           </button>
 
-          {/* Dots indicator */}
+          {/* Dots Indicator */}
           <div className="flex justify-center mt-8 space-x-2">
             {testimonials.map((_, index) => (
               <button
                 key={index}
-                onClick={() => {
-                  setDirection(index > currentIndex ? 1 : -1)
-                  setCurrentIndex(index)
-                }}
-                className={`w-2 h-2 rounded-full transition-all ${
+                onClick={() => goToTestimonial(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-200 ${
                   index === currentIndex
-                    ? 'bg-white dark:bg-white w-8'
-                    : 'bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600'
+                    ? 'bg-white w-8'
+                    : 'bg-gray-700 hover:bg-gray-600'
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
@@ -179,7 +154,7 @@ const Testimonials = () => {
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
-            className="absolute top-1/4 right-1/4 w-48 sm:w-72 h-48 sm:h-72 bg-primary-light/10 dark:bg-primary/10 rounded-full blur-3xl"
+            className="absolute top-1/4 right-1/4 w-48 sm:w-72 h-48 sm:h-72 bg-primary/10 rounded-full blur-3xl"
             animate={{
               scale: [1, 1.2, 1],
               opacity: [0.1, 0.2, 0.1],
@@ -191,7 +166,7 @@ const Testimonials = () => {
             }}
           />
           <motion.div
-            className="absolute bottom-1/4 left-1/4 w-48 sm:w-72 h-48 sm:h-72 bg-secondary-light/10 dark:bg-secondary/10 rounded-full blur-3xl"
+            className="absolute bottom-1/4 left-1/4 w-48 sm:w-72 h-48 sm:h-72 bg-secondary/10 rounded-full blur-3xl"
             animate={{
               scale: [1.2, 1, 1.2],
               opacity: [0.2, 0.1, 0.2],

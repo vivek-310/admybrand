@@ -77,35 +77,7 @@ const Hero = () => {
         </div>
 
         {/* Floating Images */}
-        <div className="absolute inset-0 pointer-events-none">
-          {/* Top right image */}
-          <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="absolute top-1/4 right-[10%] w-32 h-32 rounded-2xl overflow-hidden"
-          >
-            <img
-              src="/path-to-your-image1.jpg"
-              alt="Video production"
-              className="w-full h-full object-cover grayscale"
-            />
-          </motion.div>
-
-          {/* Bottom left image */}
-          <motion.div
-            initial={{ opacity: 0, x: -100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 1 }}
-            className="absolute bottom-1/4 left-[10%] w-32 h-32 rounded-2xl overflow-hidden"
-          >
-            <img
-              src="/path-to-your-image2.jpg"
-              alt="Video production"
-              className="w-full h-full object-cover grayscale"
-            />
-          </motion.div>
-        </div>
+        
       </div>
 
       {/* Bottom Section */}

@@ -21,12 +21,12 @@ const PricingCalculator = ({ onPriceChange }) => {
   }
 
   return (
-    <div className="bg-white dark:bg-gray-800 backdrop-blur-lg rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-lg transition-colors duration-200">
-      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6 transition-colors duration-200">Calculate Your Price</h3>
+    <div className="bg-black/30 backdrop-blur-lg rounded-xl p-6 border border-gray-700/50 shadow-lg transition-colors duration-200">
+      <h3 className="text-xl font-semibold text-white mb-6 transition-colors duration-200">Calculate Your Price</h3>
       
       {/* Credits Slider */}
       <div className="mb-6">
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-200">
+        <label className="block text-sm font-medium text-gray-300 mb-2 transition-colors duration-200">
           Monthly AI Credits: {credits.toLocaleString()}
         </label>
         <input
@@ -39,9 +39,9 @@ const PricingCalculator = ({ onPriceChange }) => {
             setCredits(Number(e.target.value))
             handleChange()
           }}
-          className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary dark:accent-primary-light transition-colors duration-200"
+          className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-white transition-colors duration-200"
         />
-        <div className="flex justify-between text-xs text-gray-600 dark:text-gray-400 mt-1 transition-colors duration-200">
+        <div className="flex justify-between text-xs text-gray-400 mt-1 transition-colors duration-200">
           <span>1,000</span>
           <span>50,000</span>
         </div>
@@ -49,7 +49,7 @@ const PricingCalculator = ({ onPriceChange }) => {
 
       {/* Team Size Slider */}
       <div className="mb-6">
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-200">
+        <label className="block text-sm font-medium text-gray-300 mb-2 transition-colors duration-200">
           Team Members: {users}
         </label>
         <input
@@ -61,9 +61,9 @@ const PricingCalculator = ({ onPriceChange }) => {
             setUsers(Number(e.target.value))
             handleChange()
           }}
-          className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary dark:accent-primary-light transition-colors duration-200"
+          className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-white transition-colors duration-200"
         />
-        <div className="flex justify-between text-xs text-gray-600 dark:text-gray-400 mt-1 transition-colors duration-200">
+        <div className="flex justify-between text-xs text-gray-400 mt-1 transition-colors duration-200">
           <span>1</span>
           <span>20</span>
         </div>
@@ -71,15 +71,15 @@ const PricingCalculator = ({ onPriceChange }) => {
 
       {/* Billing Toggle */}
       <div className="mb-6">
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-200">
+        <label className="block text-sm font-medium text-gray-300 mb-2 transition-colors duration-200">
           Billing Period
         </label>
-        <div className="flex items-center gap-4 bg-gray-100 dark:bg-gray-700 rounded-lg p-1 transition-colors duration-200">
+        <div className="flex items-center gap-4 bg-gray-800 rounded-lg p-1 transition-colors duration-200">
           <button
             className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all ${
               billing === 'monthly'
-                ? 'bg-white dark:bg-gray-600 text-gray-900 dark:text-white shadow-sm'
-                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                ? 'bg-white text-black shadow-sm'
+                : 'text-gray-400 hover:text-white'
             }`}
             onClick={() => {
               setBilling('monthly')
@@ -91,8 +91,8 @@ const PricingCalculator = ({ onPriceChange }) => {
           <button
             className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all ${
               billing === 'annual'
-                ? 'bg-white dark:bg-gray-600 text-gray-900 dark:text-white shadow-sm'
-                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                ? 'bg-white text-black shadow-sm'
+                : 'text-gray-400 hover:text-white'
             }`}
             onClick={() => {
               setBilling('annual')
@@ -111,14 +111,14 @@ const PricingCalculator = ({ onPriceChange }) => {
         animate={{ scale: [1, 1.05, 1] }}
         transition={{ duration: 0.3 }}
       >
-        <div className="text-3xl font-bold text-gray-900 dark:text-white transition-colors duration-200">
+        <div className="text-3xl font-bold text-white transition-colors duration-200">
           ${calculatePrice().toLocaleString()}
-          <span className="text-lg text-gray-600 dark:text-gray-400 ml-1 transition-colors duration-200">
+          <span className="text-lg text-gray-400 ml-1 transition-colors duration-200">
             /{billing === 'annual' ? 'year' : 'month'}
           </span>
         </div>
         {billing === 'annual' && (
-          <div className="text-sm text-green-600 dark:text-green-400 mt-2 transition-colors duration-200">
+          <div className="text-sm text-green-400 mt-2 transition-colors duration-200">
             Save ${(calculatePrice() * 0.2).toLocaleString()} annually
           </div>
         )}

@@ -1,20 +1,22 @@
-import { useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useEffect } from 'react'
 
-const Modal = ({
-  isOpen,
-  onClose,
-  title,
-  children,
+const Modal = ({ 
+  isOpen, 
+  onClose, 
+  title, 
+  children, 
   size = 'md',
-  showClose = true
+  showCloseButton = true 
 }) => {
-  // Close on escape key
+  // Close modal on escape key
   useEffect(() => {
     const handleEscape = (e) => {
-      if (e.key === 'Escape') onClose()
+      if (e.key === 'Escape') {
+        onClose()
+      }
     }
-    
+
     if (isOpen) {
       document.addEventListener('keydown', handleEscape)
       document.body.style.overflow = 'hidden'
@@ -28,102 +30,102 @@ const Modal = ({
 
   const sizes = {
     sm: 'max-w-md',
-    md: 'max-w-lg',
-    lg: 'max-w-2xl',
-    xl: 'max-w-4xl'
-  }
-
-  const backdropVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 }
+    md: 'max-w-2xl',
+    lg: 'max-w-4xl',
+    xl: 'max-w-6xl',
+    full: 'max-w-full mx-4'
   }
 
   const modalVariants = {
     hidden: {
       opacity: 0,
-      y: 50,
-      scale: 0.95
+      scale: 0.8,
+      y: 20
     },
     visible: {
       opacity: 1,
-      y: 0,
       scale: 1,
+      y: 0,
       transition: {
-        type: 'spring',
-        stiffness: 300,
-        damping: 30
+        duration: 0.3,
+        ease: 'easeOut'
       }
     },
     exit: {
       opacity: 0,
-      y: 50,
-      scale: 0.95,
+      scale: 0.8,
+      y: 20,
       transition: {
-        duration: 0.2
+        duration: 0.2,
+        ease: 'easeIn'
       }
     }
   }
 
+  const backdropVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+    exit: { opacity: 0 }
+  }
+
+  if (!isOpen) return null
+
   return (
     <AnimatePresence>
-      {isOpen && (
-        <div className="fixed inset-0 z-50 overflow-y-auto">
-          <div className="min-h-screen px-4 text-center">
-            {/* Backdrop */}
-            <motion.div
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm"
-              variants={backdropVariants}
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-              onClick={onClose}
-            />
-
-            {/* Modal */}
-            <div className="inline-block w-full h-screen align-middle">
-              <motion.div
-                className={`relative inline-block w-full ${sizes[size]} my-8 overflow-hidden text-left align-middle bg-white dark:bg-gray-900 dark:bg-gradient-to-b dark:from-gray-900 dark:to-black rounded-2xl border border-gray-200 dark:border-white/10 backdrop-blur-xl shadow-2xl p-6`}
-                variants={modalVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
+      <motion.div
+        className="fixed inset-0 z-50 flex items-center justify-center p-4"
+        variants={backdropVariants}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        onClick={onClose}
+      >
+        {/* Backdrop */}
+        <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+        
+        {/* Modal */}
+        <motion.div
+          className={`relative inline-block w-full ${sizes[size]} my-8 overflow-hidden text-left align-middle bg-black rounded-2xl border border-white/10 backdrop-blur-xl shadow-2xl p-6`}
+          variants={modalVariants}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Header */}
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-xl sm:text-2xl font-bold text-white">
+              {title}
+            </h3>
+            {showCloseButton && (
+              <button
+                onClick={onClose}
+                className="p-2 rounded-lg hover:bg-white/10 transition-colors duration-200"
+                aria-label="Close modal"
               >
-                {/* Header */}
-                <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
-                    {title}
-                  </h3>
-                  {showClose && (
-                    <button
-                      onClick={onClose}
-                      className="text-gray-400 hover:text-white transition-colors"
-                    >
-                      <svg
-                        className="w-6 h-6"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
-                    </button>
-                  )}
-                </div>
-
-                {/* Content */}
-                <div className="relative">
-                  {children}
-                </div>
-              </motion.div>
-            </div>
+                <svg
+                  className="w-6 h-6 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            )}
           </div>
-        </div>
-      )}
+
+          {/* Content */}
+          <div className="relative">
+            {children}
+          </div>
+        </motion.div>
+      </motion.div>
     </AnimatePresence>
   )
 }

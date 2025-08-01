@@ -85,7 +85,7 @@ const Features = () => {
     "lg:col-span-3 lg:row-span-2", // big hero tile
     "lg:col-span-3 lg:row-span-1",
     "lg:col-span-3 lg:row-span-1",
-    "lg:col-span-2 lg:row-span-2",
+    "lg:col-span-2 lg:row-span-1",
     "lg:col-span-2 lg:row-span-1",
     "lg:col-span-2 lg:row-span-1",
   ];
@@ -106,7 +106,7 @@ const Features = () => {
   return (
     <section
       id="features"
-      className="relative py-16 sm:py-20 bg-black dark:bg-black overflow-hidden transition-colors duration-200"
+      className="relative py-16 sm:py-20 bg-black overflow-hidden transition-colors duration-200"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -117,10 +117,10 @@ const Features = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white dark:text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
             Powerful Features for Modern Marketing
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-4 transition-colors duration-200">
+          <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto px-4 transition-colors duration-200">
             Everything you need to take your marketing to the next level with artificial intelligence.
           </p>
         </motion.div>
@@ -149,9 +149,9 @@ const Features = () => {
                 variant="glass"
                 className="
                   h-full p-5 sm:p-6 lg:p-7
-                  bg-white/5 dark:bg-black/30 backdrop-blur-lg
-                  hover:bg-white/10 dark:hover:bg-black/40
-                  border border-white/10 dark:border-gray-700/50
+                  bg-black/30 backdrop-blur-lg
+                  hover:bg-black/40
+                  border border-gray-700/50
                   transition-all duration-300
                   flex flex-col
                 "
@@ -159,13 +159,13 @@ const Features = () => {
                 {/* Top row: icon + title */}
                 <div className="flex items-start gap-4">
                   <motion.div
-                    className="p-2 bg-white dark:bg-white text-black dark:text-black rounded-lg shrink-0"
+                    className="p-2 bg-white text-black rounded-lg shrink-0"
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
                     {feature.icon}
                   </motion.div>
-                  <h3 className="text-lg sm:text-xl font-semibold text-gray-100">
+                  <h3 className="text-lg sm:text-xl font-semibold text-white">
                     {feature.title}
                   </h3>
                 </div>
@@ -209,12 +209,12 @@ const Features = () => {
         {/* Background Elements (optional) */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
-            className="absolute -top-10 -right-10 w-48 sm:w-72 h-48 sm:h-72 bg-primary-light/10 dark:bg-primary/10 rounded-full blur-3xl"
+            className="absolute -top-10 -right-10 w-48 sm:w-72 h-48 sm:h-72 bg-primary/10 rounded-full blur-3xl"
             animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           />
           <motion.div
-            className="absolute -bottom-10 -left-10 w-48 sm:w-72 h-48 sm:h-72 bg-secondary-light/10 dark:bg-secondary/10 rounded-full blur-3xl"
+            className="absolute -bottom-10 -left-10 w-48 sm:w-72 h-48 sm:h-72 bg-secondary/10 rounded-full blur-3xl"
             animate={{ scale: [1.2, 1, 1.2], opacity: [0.2, 0.1, 0.2] }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           />

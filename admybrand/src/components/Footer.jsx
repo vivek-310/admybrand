@@ -18,14 +18,14 @@ const fadeUp = {
 const Arrow = ({ className = "w-4 h-4" }) => (
   <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
     <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" strokeWidth="1.6" />
-  </svg>
+        </svg>
 );
 
 function Footer() {
   return (
     <footer className="relative bg-black text-zinc-200 overflow-hidden">
       {/* Giant background word */}
-      <motion.div
+            <motion.div
         aria-hidden
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -114,11 +114,11 @@ function Footer() {
                 </motion.a>
               ))}
             </nav>
-          </div>
+        </div>
 
           <div className="mt-6 text-xs text-zinc-500">
             © {new Date().getFullYear()} Pillarstack‑style footer.
-          </div>
+        </div>
         </motion.div>
       </div>
     </footer>

@@ -1,44 +1,44 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import Card from './Card'
 
 const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState(null)
+  const [openIndex, setOpenIndex] = useState(0)
 
   const faqs = [
     {
-      question: 'How does ADmyBRAND AI generate content?',
-      answer: 'Our AI uses advanced natural language processing and machine learning algorithms trained on successful marketing campaigns to generate high-quality, engaging content tailored to your brand voice and target audience.'
+      question: 'What is ADmyBRAND AI and how does it work?',
+      answer: 'ADmyBRAND AI is an advanced marketing platform that uses artificial intelligence to generate engaging content, optimize campaigns, and provide deep audience insights. Our AI analyzes your brand, target audience, and market trends to create personalized marketing content that drives results.'
     },
     {
-      question: 'Can I integrate ADmyBRAND with my existing marketing tools?',
-      answer: 'Yes! ADmyBRAND AI offers seamless integration with popular marketing platforms including Google Analytics, Facebook Ads, Mailchimp, and more through our API and native integrations.'
+      question: 'How accurate is the AI content generation?',
+      answer: 'Our AI content generation is highly accurate and continuously improving. It learns from your brand voice, previous successful campaigns, and industry best practices. The content is reviewed by our team and can be customized to match your specific requirements and brand guidelines.'
     },
     {
-      question: 'How accurate are the AI-powered predictions?',
-      answer: 'Our predictive analytics typically achieve 85-95% accuracy, based on historical data and real-time market trends. The AI continuously learns and improves its predictions as it processes more data from your campaigns.'
+      question: 'Can I integrate ADmyBRAND AI with my existing tools?',
+      answer: 'Yes! ADmyBRAND AI integrates seamlessly with popular marketing platforms including Google Ads, Facebook Ads, Instagram, LinkedIn, Twitter, and many more. We also provide API access for custom integrations with your existing marketing stack.'
     },
     {
-      question: 'What type of support do you offer?',
-      answer: 'We offer different levels of support based on your plan. Basic plans include email support with 24-hour response time, while Pro and Enterprise plans include priority support, dedicated account managers, and 24/7 technical assistance.'
+      question: 'What kind of support do you provide?',
+      answer: 'We offer comprehensive support including email support for all plans, priority support for Professional plans, and dedicated account management for Enterprise customers. Our team is available to help you get the most out of the platform and achieve your marketing goals.'
     },
     {
       question: 'Is my data secure with ADmyBRAND AI?',
-      answer: 'Absolutely. We employ enterprise-grade encryption, regular security audits, and comply with GDPR, CCPA, and other major data protection regulations. Your data is stored in secure, SOC 2 certified data centers.'
+      answer: 'Absolutely. We take data security seriously and implement enterprise-grade security measures including end-to-end encryption, regular security audits, and compliance with GDPR and other privacy regulations. Your data is never shared with third parties without your explicit consent.'
     },
     {
-      question: 'Can I switch plans later?',
-      answer: 'Yes, you can upgrade or downgrade your plan at any time. When upgrading, you\'ll get immediate access to new features. When downgrading, changes will take effect at the start of your next billing cycle.'
+      question: 'Can I cancel my subscription at any time?',
+      answer: 'Yes, you can cancel your subscription at any time with no cancellation fees. You\'ll continue to have access to the platform until the end of your current billing period. We also offer a 30-day money-back guarantee if you\'re not satisfied with our service.'
     }
   ]
 
-  const toggleAccordion = (index) => {
-    setOpenIndex(openIndex === index ? null : index)
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? -1 : index)
   }
 
   return (
-    <section id="faq" className="relative py-16 sm:py-20 bg-black dark:bg-black overflow-hidden transition-colors duration-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="faq" className="relative py-16 sm:py-20 bg-black overflow-hidden transition-colors duration-200">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <motion.div
           className="text-center mb-12 sm:mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -46,56 +46,41 @@ const FAQ = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white dark:text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
             Frequently Asked Questions
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-4 transition-colors duration-200">
-            Everything you need to know about ADmyBRAND AI
+          <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto px-4 transition-colors duration-200">
+            Got questions? We've got answers. Here are the most common questions about ADmyBRAND AI.
           </p>
         </motion.div>
 
-        <motion.div
-          className="max-w-3xl mx-auto space-y-3 sm:space-y-4"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
+        {/* FAQ Items */}
+        <div className="space-y-4">
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <Card
-                variant="default"
-                className={`cursor-pointer transition-all duration-200 bg-white/5 dark:bg-black/30 backdrop-blur-lg hover:bg-white/10 dark:hover:bg-black/40 border border-white/10 dark:border-gray-700/50 ${
-                  openIndex === index ? 'bg-white/10 dark:bg-black/40' : ''
+              <div
+                className={`cursor-pointer transition-all duration-200 bg-black/30 backdrop-blur-lg hover:bg-black/40 border border-gray-700/50 ${
+                  openIndex === index ? 'bg-black/40' : ''
                 }`}
-                onClick={() => toggleAccordion(index)}
+                onClick={() => toggleFAQ(index)}
               >
-                <div className="flex justify-between items-start sm:items-center gap-4">
-                  <motion.h3
-                    className="text-base sm:text-lg font-medium text-gray-100 dark:text-white flex-1 transition-colors duration-200"
-                    initial={false}
-                    animate={{ 
-                      color: openIndex === index 
-                        ? 'rgb(96, 165, 250)' // blue-400 in light mode
-                        : 'rgb(243, 244, 246)' // gray-100 in light mode
-                    }}
-                  >
+                <div className="flex items-center justify-between p-6">
+                  <h3 className="text-base sm:text-lg font-medium text-white flex-1 transition-colors duration-200">
                     {faq.question}
-                  </motion.h3>
+                  </h3>
                   <motion.svg
-                    className="w-5 h-5 sm:w-6 sm:h-6 text-gray-500 dark:text-gray-400 shrink-0 mt-1 sm:mt-0 transition-colors duration-200"
+                    className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 shrink-0 mt-1 sm:mt-0 transition-colors duration-200"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
-                    initial={false}
                     animate={{ rotate: openIndex === index ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.2 }}
                   >
                     <path
                       strokeLinecap="round"
@@ -105,47 +90,69 @@ const FAQ = () => {
                     />
                   </motion.svg>
                 </div>
+
                 <AnimatePresence>
                   {openIndex === index && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
                       className="overflow-hidden"
                     >
-                      <motion.p
-                        className="mt-4 text-sm sm:text-base text-gray-300 dark:text-gray-400 transition-colors duration-200"
-                        initial={{ y: -10, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: -10, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        {faq.answer}
-                      </motion.p>
+                      <div className="px-6 pb-6">
+                        <p className="mt-4 text-sm sm:text-base text-gray-400 transition-colors duration-200">
+                          {faq.answer}
+                        </p>
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </Card>
+              </div>
             </motion.div>
           ))}
+        </div>
+
+        {/* CTA Section */}
+        <motion.div
+          className="text-center mt-12 sm:mt-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <p className="text-gray-400 mb-6 transition-colors duration-200">
+            Still have questions? We're here to help!
+          </p>
+          <button className="bg-white text-black px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors duration-200">
+            Contact Support
+          </button>
         </motion.div>
 
-        {/* Background animation */}
+        {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
-            className="absolute top-0 left-0 w-full h-full"
-            initial={{ backgroundPosition: '0% 0%' }}
-            animate={{ backgroundPosition: ['0% 0%', '100% 100%'] }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              repeatType: 'reverse',
-              ease: 'linear'
+            className="absolute top-1/4 right-1/4 w-48 sm:w-72 h-48 sm:h-72 bg-primary/10 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.1, 0.2, 0.1],
             }}
-            style={{
-              background: 'radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 60%)',
-              backgroundSize: '200% 200%'
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div
+            className="absolute bottom-1/4 left-1/4 w-48 sm:w-72 h-48 sm:h-72 bg-secondary/10 rounded-full blur-3xl"
+            animate={{
+              scale: [1.2, 1, 1.2],
+              opacity: [0.2, 0.1, 0.2],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
             }}
           />
         </div>
