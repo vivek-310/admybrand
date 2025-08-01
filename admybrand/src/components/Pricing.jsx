@@ -90,11 +90,11 @@ const Pricing = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="relative"
+              className="relative h-full"
             >
               <Card
                 variant="glass"
-                className={`relative h-full bg-black/30 backdrop-blur-lg hover:bg-black/40 border border-gray-700/50 ${
+                className={`relative h-full flex flex-col bg-black/30 backdrop-blur-lg hover:bg-black/40 border border-gray-700/50 ${
                   plan.popular ? 'border-primary transform md:scale-105' : ''
                 }`}
               >
@@ -128,30 +128,32 @@ const Pricing = () => {
                   </div>
                 </div>
 
-                {/* Features */}
-                <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-gray-300 transition-colors duration-200">
-                      <svg
-                        className="w-5 h-5 text-primary mr-3 flex-shrink-0"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+                {/* Features - This section will grow to fill available space */}
+                <div className="flex-grow">
+                  <ul className="space-y-3">
+                    {plan.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-center text-gray-300 transition-colors duration-200">
+                        <svg
+                          className="w-5 h-5 text-primary mr-3 flex-shrink-0"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-                {/* CTA Button */}
-                <div className="mt-auto">
+                {/* CTA Button - This will always be at the bottom */}
+                <div className="mt-8 pt-6">
                   <button
                     className={`w-full py-3 px-6 rounded-lg font-medium transition-all duration-200 ${
                       plan.popular

@@ -5,11 +5,11 @@ import AnimatedLogo from './components/AnimatedLogo'
 import { useScroll } from 'framer-motion'
 import PreLoader from './components/PreLoader'
 
-// Eagerly load Navbar for immediate display
+// Eagerly load Navbar and Hero for immediate display
 import Navbar from './components/Navbar'
+import Hero from './components/Hero'
 
 // Lazy load other components
-const Hero = lazy(() => import('./components/Hero'))
 const VideoSection = lazy(() => import('./components/VideoSection'))
 const Features = lazy(() => import('./components/Features'))
 const Pricing = lazy(() => import('./components/Pricing'))
@@ -66,17 +66,16 @@ function App() {
           >
             <Navbar />
             
+            {/* Hero section - no lazy loading */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Hero />
+            </motion.div>
+            
             <AnimatePresence mode="wait">
-              <Suspense fallback={<LoadingSpinner />}>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <Hero />
-                </motion.div>
-              </Suspense>
-
               <Suspense fallback={<LoadingSpinner />}>
                 <motion.div
                   initial={{ opacity: 0 }}
