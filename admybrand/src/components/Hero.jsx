@@ -28,7 +28,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-6xl md:text-8xl font-serif text-white mb-8 tracking-tight"
             >
-              We create videos
+              We Create with AI
             </motion.h1>
 
             {/* Subtext */}
@@ -38,9 +38,10 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="max-w-2xl text-white/70 text-lg mb-12"
             >
-              <p>WE ARE A VIDEO PRODUCTION STUDIO</p>
-              <p>THAT CREATES HIGH-QUALITY CONTENT</p>
-              <p>SO YOU CAN REACH A BIGGER AUDIENCE</p>
+              <p>TRANSFORM YOUR BRAND’S STORY WITH THE POWER OF AI</p>
+              <p>FAST, SMART, AND EFFORTLESS — CREATE IMPACTFUL CONTENT IN MINUTES</p>
+              {/* <p>THAT CREATES HIGH-QUALITY CONTENT</p>
+              <p>SO YOU CAN REACH A BIGGER AUDIENCE</p> */}
             </motion.div>
 
             {/* CTA Button */}
@@ -56,7 +57,7 @@ const Hero = () => {
                 className="group relative overflow-hidden"
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  QUALIFY FOR AN INTERVIEW
+                  LAUNCH IT
                   <svg
                     className="w-6 h-6 transform group-hover:translate-x-1 transition-transform"
                     fill="none"
