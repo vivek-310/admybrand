@@ -28,7 +28,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-6xl md:text-8xl font-serif text-white mb-8 tracking-tight"
             >
-              We make with AI
+              We create with AI
             </motion.h1>
 
             {/* Subtext */}
