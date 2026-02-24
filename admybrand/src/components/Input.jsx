@@ -11,7 +11,7 @@ const Input = ({
 }) => {
   const [isFocused, setIsFocused] = useState(false)
   console.log("TEST");
-
+  console.log("SAMPLE");
   return (
     <div className={`relative ${className}`}>
       {label && (
