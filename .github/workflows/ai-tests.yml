@@ -22,12 +22,15 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: admybrand
 
       - name: Run AI test generator
         run: npm run gen:diff-tests
+        working-directory: admybrand
 
       - name: Run tests
         run: npm test -- --watchAll=false
+        working-directory: admybrand
 
       - name: Comment PR with AI result
         if: always()
