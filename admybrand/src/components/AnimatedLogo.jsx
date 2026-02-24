@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 
 const AnimatedLogo = () => {
-  console.log("TESTING");
+ console.log("TEST");
   return (
     <div className="relative w-24 h-24">
       {/* 3D Rotating Cube */}
