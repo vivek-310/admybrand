@@ -16,7 +16,7 @@ async function getRepoRoot() {
   return (await git.revparse(["--show-toplevel"])).trim();
 }
 async function getChangedFiles() {
-  const diff = await git.diff(["--name-only"]);
+  const diff = await git.diff(["origin/main...HEAD", "--name-only"]);
   const repoRoot = await getRepoRoot();
 
   return diff
