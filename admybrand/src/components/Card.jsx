@@ -10,6 +10,7 @@ const Card = ({
     solid: 'bg-black shadow-xl shadow-black/50'
   }
   console.log("test");
+  console.log("HELLO")
   return (
     <div
       className={`rounded-2xl p-6 transition-all duration-200 ${variants[variant]} ${className}`}
