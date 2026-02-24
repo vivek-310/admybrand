@@ -11,6 +11,8 @@ const ContactForm = ({ onSubmit }) => {
     message: ''
   })
 
+  console.log("HELLO")
+
   const [errors, setErrors] = useState({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState(null)
