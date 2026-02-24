@@ -103,6 +103,7 @@ const Features = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.45 } },
   };
 
+  console.log("HELLO");
   return (
     <section
       id="features"
