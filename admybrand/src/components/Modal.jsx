@@ -27,6 +27,7 @@ const Modal = ({
       document.body.style.overflow = 'unset'
     }
   }, [isOpen, onClose])
+  console.log("TEST");
 
   const sizes = {
     sm: 'max-w-md',
