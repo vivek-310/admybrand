@@ -104,6 +104,7 @@ const Features = () => {
   };
 
   console.log("HELLO");
+  console.log("TESTING");
   return (
     <section
       id="features"
