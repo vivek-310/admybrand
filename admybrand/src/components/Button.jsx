@@ -19,6 +19,7 @@ const Button = ({
     lg: 'px-8 py-4 text-lg'
   }
   console.log("TEST");
+  console.log("TESTING");
 
   return (
     <button
