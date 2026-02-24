@@ -10,6 +10,7 @@ const Input = ({
   ...props
 }) => {
   const [isFocused, setIsFocused] = useState(false)
+  console.log("TEST");
 
   return (
     <div className={`relative ${className}`}>
