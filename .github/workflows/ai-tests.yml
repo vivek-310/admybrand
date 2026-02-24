@@ -33,7 +33,7 @@ jobs:
         working-directory: admybrand
 
       - name: Comment PR with AI result
-        if: always()
+        if: github.event_name == 'pull_request'
         uses: actions/github-script@v7
         with:
           script: |
