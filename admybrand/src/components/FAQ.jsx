@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { getInitialOpenIndex ,formatQuestion} from '../utils/faqHelpers'
 
 const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState(0)
+  const [openIndex, setOpenIndex] = useState(getInitialOpenIndex())
 
   const faqs = [
     {
@@ -72,7 +73,7 @@ const FAQ = () => {
               >
                 <div className="flex items-center justify-between p-6">
                   <h3 className="text-base sm:text-lg font-medium text-white flex-1 transition-colors duration-200">
-                    {faq.question}
+                    {formatQuestion(faq.question)}
                   </h3>
                   <motion.svg
                     className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 shrink-0 mt-1 sm:mt-0 transition-colors duration-200"
