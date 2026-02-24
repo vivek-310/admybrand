@@ -28,6 +28,8 @@ jobs:
 
       - name: Run AI test generator
         run: npm run gen:diff-tests
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         working-directory: admybrand
 
       - name: Run tests
